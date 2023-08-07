@@ -27,11 +27,15 @@ const PatientListPage = ({ patients, setPatients } : Props ) => {
   };
 
   const submitNewPatient = async (values: PatientFormValues) => {
+    console.log ("test")
     try {
       const patient = await patientService.create(values);
+      console.log("🚀 ~ file: index.tsx:32 ~ submitNewPatient ~ patient:", patient)
+      
       setPatients(patients.concat(patient));
       setModalOpen(false);
     } catch (e: unknown) {
+      console.log(e)
       if (axios.isAxiosError(e)) {
         if (e?.response?.data && typeof e?.response?.data === "string") {
           const message = e.response.data.replace('Something went wrong. Error: ', '');
