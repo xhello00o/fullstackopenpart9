@@ -112,7 +112,7 @@ For ```useState()```, typing is achieved by asserting with ```<type>```. The sam
 
 Defining a type or interface is interchangeable. The distinction lies in uniqueness; a type must be unique, whereas interfaces with the same name are merged.
 
-In this section, a flight diary app was made. The template for the backend was provided [here](https://github.com/fullstack-hy2020/flight-diary). The frontend of this flight diary was built on top of the fork from the backend. It can be found in the branch [```flight_diary_FrontEnd```](https://github.com/xhello00o/fullstackopenpart9/tree/flight_diary_FrontEnd)
+For exercises 9.14 - 9.15, a simple course description app was done.It can be found in the branch [```typing_React```](https://github.com/xhello00o/fullstackopenpart9/tree/typing_React).In this section for exercises 9.16 - 9.19, a flight diary app was made. The template for the backend was provided [here](https://github.com/fullstack-hy2020/flight-diary). The frontend of this flight diary was built on top of the fork from the backend. It can be found in the branch [```flight_diary_FrontEnd```](https://github.com/xhello00o/fullstackopenpart9/tree/flight_diary_FrontEnd)
 
 ```typescript
 interface WelcomeProps {
