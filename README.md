@@ -102,3 +102,68 @@ export enum Weather {
 
 ```
 
+## React with types ( Exercises 9.14 - 9.19 )
+
+For React elements/components, it shoudl be typed as ```JSX.element```. Props can be typed in an interface or deconstructed and individually typed. Event handling, like for handleClicks, can be typed with ```React.SyntheticEvent```. The ```!``` symbol asserts to TypeScript that a variable will never be null, functioning similarly to as for type assertion.
+
+When dealing with multiple objects sharing similar keys/properties, extend can customize the base type to fit respective interfaces. Each interface requires a consistent identifier, such as ```kind:...```, similarly for the data. Deep typing allows further narrowing with ```switch (part.kind) ... case "<kind>" ``` for specific code suggestions based on the kind.
+
+For ```useState()```, typing is achieved by asserting with ```<type>```. The same applies to ```axios.get``` or other ```axios``` commands.
+
+Defining a type or interface is interchangeable. The distinction lies in uniqueness; a type must be unique, whereas interfaces with the same name are merged.
+
+In this section, a flight diary app was made. The template for the backend was provided [here](https://github.com/fullstack-hy2020/flight-diary). The frontend of this flight diary was built on top of the fork from the backend. It can be found in the branch [```flight_diary_FrontEnd```](https://github.com/xhello00o/fullstackopenpart9/tree/flight_diary_FrontEnd)
+
+```typescript
+interface WelcomeProps {
+  name: string;
+}
+const Welcome = (props: WelcomeProps): JSX.Element => {
+  return <h1>Hello, {props.name}</h1>;
+};
+// Or do it like this
+const Welcome = ({ name }: { name: string }): JSX.Element => (
+  <h1>Hello, {name}</h1>
+
+const noteCreation = (event: React.SyntheticEvent) => {
+    event.preventDefault()
+    const noteToAdd = {
+      content: newNote,
+      id: notes.length + 1
+    }
+    setNotes(notes.concat(noteToAdd));
+    setNewNote('')
+  };
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <Welcome name="Sarah" />
+)
+```
+```typescript
+interface CoursePartBase {
+  name: string;
+  exerciseCount: number;
+}
+interface CoursePartBasic extends CoursePartBase {
+  description: string;
+  kind: "basic"
+}
+interface CoursePartGroup extends CoursePartBase {
+  groupProjectCount: number;
+  kind: "group"
+}
+interface CoursePartBackground extends CoursePartBase {
+  description: string;
+  backgroundMaterial: string;
+  kind: "background"
+}
+type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
+```
+```typescript
+const [notes, setNotes] = useState<Note[]>([]);
+
+export const getAllNotes = () => {
+  return axios
+    .get<Note[]>(baseUrl)
+    .then(response => response.data)
+}
+```
