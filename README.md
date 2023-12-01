@@ -167,3 +167,6 @@ export const getAllNotes = () => {
     .then(response => response.data)
 }
 ```
+## Grande finale: Patientor
+we finalized the frontend for the backend we built in exercises 9.8.-9.13. We will mainly be using ```@mui/material``` to design the frontend. The final patientor will have a main page to display the vaious patient. When you click into each patient, it will have a list of the previous entries(e.g hospitalization, health check-up etc.). There will a button each for creating new patients and new entries respectively.
+The final exercise can be found in [```backendpatientor```](https://github.com/xhello00o/fullstackopenpart9/blob/backendpatientor) branch. This continues from the previous exercises in 9.8 - 9.13.
